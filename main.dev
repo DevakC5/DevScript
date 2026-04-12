@@ -1,0 +1,116 @@
+# main.dev — DevLang v3.0 full demo
+# Run: dev run main.dev
+
+# ── 1. Inline comments ────────────────────────────
+say "=== DevLang v3.0 Demo ===" # this is an inline comment
+let x = 10 # set x to 10
+
+# ── 2. else block ─────────────────────────────────
+let score = 72
+
+if score >= 90 ->
+    say "Grade: A"
+else
+    if score >= 75 ->
+        say "Grade: B"
+    else
+        say "Grade: C"
+    end
+end
+
+# ── 3. and / or / not ─────────────────────────────
+let age = 20
+let has_id = true
+
+if age >= 18 and has_id == true ->
+    say "Entry allowed"
+end
+
+if age < 13 or age > 60 ->
+    say "Special discount"
+else
+    say "Regular price"
+end
+
+if not age < 18 ->
+    say "Definitely an adult"
+end
+
+# ── 4. while loop ─────────────────────────────────
+say "--- Countdown ---"
+let n = 5
+while n > 0 ->
+    say n
+    let n = n - 1
+end
+say "Blastoff!"
+
+# ── 5. Functions (def / return) ───────────────────
+say "--- Functions ---"
+
+def greet(name) ->
+    say "Hello, " + name + "!"
+end
+
+def add(a, b) ->
+    return a + b
+end
+
+def is_even(num) ->
+    if num % 2 == 0 ->
+        return true
+    else
+        return false
+    end
+end
+
+greet("Atharva")
+
+let result = add(7, 8)
+say result                         # 15
+
+let check = is_even(4)
+say check                          # true
+
+# ── 6. String methods ─────────────────────────────
+say "--- String Methods ---"
+
+let lang = "  devlang  "
+say lang.trim()                    # devlang
+say lang.trim().upper()            # DEVLANG
+say lang.trim().lower()            # devlang
+say lang.trim().len()              # 7
+
+let sentence = "I love coding"
+say sentence.contains("love")      # true
+say sentence.replace("love", "enjoy")  # I enjoy coding
+
+# ── 7. Functions + loops combined ─────────────────
+say "--- FizzBuzz ---"
+
+def fizzbuzz(num) ->
+    if num % 15 == 0 ->
+        return "FizzBuzz"
+    else
+        if num % 3 == 0 ->
+            return "Fizz"
+        else
+            if num % 5 == 0 ->
+                return "Buzz"
+            else
+                return num
+            end
+        end
+    end
+end
+
+let i = 1
+while i <= 15 ->
+    say fizzbuzz(i)
+    let i = i + 1
+end
+
+# ── 8. Input ──────────────────────────────────────
+say "--- Input ---"
+input name -> "Your name: "
+say "Hey, " + name + "! Welcome to DevLang."

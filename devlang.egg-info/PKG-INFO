@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: devlang
+Version: 1.0.0
+Summary: DevLang – a clean beginner-friendly programming language
+Requires-Python: >=3.7
+Requires-Dist: rich
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
