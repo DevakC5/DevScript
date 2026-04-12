@@ -1,8 +1,0 @@
-dev_interpreter.py
-setup.py
-devlang.egg-info/PKG-INFO
-devlang.egg-info/SOURCES.txt
-devlang.egg-info/dependency_links.txt
-devlang.egg-info/entry_points.txt
-devlang.egg-info/requires.txt
-devlang.egg-info/top_level.txt

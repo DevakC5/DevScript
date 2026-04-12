@@ -1,0 +1,39 @@
+# scripts/calculator.dev — A simple calculator in DevLang
+say "=== DevLang Calculator ==="
+say "Available operations: +, -, *, /"
+say "Type 'exit' to quit."
+
+let running = true
+
+while running == true ->
+    input op -> "Enter operator (+, -, *, /, exit): "
+    
+    if op == "exit" ->
+        let running = false
+        say "Goodbye!"
+    else
+        input n1 -> "First number: "
+        input n2 -> "Second number: "
+        
+        if op == "+" ->
+            let res = n1 + n2
+            say "Result: " + res
+        end
+        if op == "-" ->
+            let res = n1 - n2
+            say "Result: " + res
+        end
+        if op == "*" ->
+            let res = n1 * n2
+            say "Result: " + res
+        end
+        if op == "/" ->
+            if n2 == 0 ->
+                say "Error: Division by zero!"
+            else
+                let res = n1 / n2
+                say "Result: " + res
+            end
+        end
+    end
+end

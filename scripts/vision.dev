@@ -1,0 +1,19 @@
+# vision.dev — Computer Vision Library for DevLang
+
+say "[vision.dev] Computer Vision Library Loaded"
+
+def imread(path) ->
+    return cv_imread(path)
+end
+
+def imwrite(path, img) ->
+    return cv_imwrite(path, img)
+end
+
+def blur(img, k) ->
+    return cv_blur(img, k)
+end
+
+def grayscale(img) ->
+    return cv_gray(img)
+end
