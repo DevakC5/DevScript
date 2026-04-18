@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "devscript"
+version = "0.1.0"
+description = "A modular, extensible interpreter for the DevScript language"
+dependencies = [
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+devscript = "devscript.cli.main:main"

@@ -1,0 +1,8 @@
+let a = array([1, 2, 3])
+let b = a * 2
+
+if sum(b) > 10 ->
+  say "Big array"
+else ->
+  say "Small array"
+end
