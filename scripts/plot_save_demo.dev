@@ -1,6 +1,6 @@
 # plot_save_demo.dev — Saving Plots as Images
 
-import "chart.dev"
+import "charts"
 
 say "=== Saving a Bar Chart ==="
 let labels = ["Apple", "Banana", "Cherry"]

@@ -8,8 +8,6 @@ from typing import Any
 from .lexer import cast
 from .console import error
 from .nodes import StructInstance
-from . import charts as _charts
-from . import img as _img
 
 _RAW_OPS: dict[str, Any] = {
     '+':  operator.add,  '-':  operator.sub,
@@ -51,7 +49,7 @@ _PREC = [
 
 
 def _split_outside_quotes(expr: str, op: str, from_right: bool = False):
-    in_q, q_char, idxs, depth, p_depth = False, '', [], 0, 0
+    in_q, q_char, idxs, depth, p_depth, d_depth = False, '', [], 0, 0, 0
     i = 0
     while i < len(expr):
         ch = expr[i]
@@ -68,7 +66,11 @@ def _split_outside_quotes(expr: str, op: str, from_right: bool = False):
                 p_depth += 1
             elif ch == ')':
                 p_depth -= 1
-            elif depth == 0 and p_depth == 0 and expr[i:i + len(op)] == op:
+            elif ch == '{':
+                d_depth += 1
+            elif ch == '}':
+                d_depth -= 1
+            elif depth == 0 and p_depth == 0 and d_depth == 0 and expr[i:i + len(op)] == op:
                 if len(op) == 1 and op == '*':
                     if (i + 1 < len(expr) and expr[i + 1] == '*') or (i > 0 and expr[i - 1] == '*'):
                         i += 1; continue
@@ -82,7 +84,7 @@ def _split_outside_quotes(expr: str, op: str, from_right: bool = False):
 
 
 def split_args(s: str) -> list[str]:
-    args, depth, b_depth, cur, in_q, q_char = [], 0, 0, [], False, ''
+    args, depth, b_depth, d_depth, cur, in_q, q_char = [], 0, 0, 0, [], False, ''
     for ch in s:
         if in_q:
             cur.append(ch)
@@ -97,7 +99,11 @@ def split_args(s: str) -> list[str]:
             if ch == ')': depth -= 1
             else: b_depth -= 1
             cur.append(ch)
-        elif ch == ',' and depth == 0 and b_depth == 0:
+        elif ch == '{':
+            d_depth += 1; cur.append(ch)
+        elif ch == '}':
+            d_depth -= 1; cur.append(ch)
+        elif ch == ',' and depth == 0 and b_depth == 0 and d_depth == 0:
             args.append(''.join(cur)); cur = []
         else:
             cur.append(ch)
@@ -601,21 +607,6 @@ BUILTINS: dict[str, Any] = {
     'csv_parse':   _csv_parse,
     'csv_read':    _csv_read,
     'csv_write':   _csv_write,
-    'cv_imread':  _img.imread,
-    'cv_imwrite': _img.imwrite,
-    'cv_blur':    _img.blur,
-    'cv_gray':    _img.grayscale,
-    'cv_resize':  _img.resize,
-    'cv_rotate':  _img.rotate,
-    'cv_threshold': _img.threshold,
-    'cv_canny':   _img.canny,
-    'plot_bar':      _charts.plot_bar,
-    'plot_line':     _charts.plot_line,
-    'plot_scatter':  _charts.plot_scatter,
-    'plot_hist':     _charts.plot_hist,
-    'plot_cartesian': _charts.plot_cartesian,
-    'plot_3d':       _charts.plot_3d_scatter,
-    'plot_save':     _charts.plot_save,
 }
 
 def val_to_str(val: Any) -> str:

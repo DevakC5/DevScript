@@ -278,7 +278,9 @@ def _extract_block(lines, line_nos, start):
     i = start
     while i < len(lines):
         ln = strip_inline_comment(lines[i]).strip()
-        if RE_BLOCK.match(ln) and '->' in ln: depth += 1
+        if RE_BLOCK.match(ln) and '->' in ln:
+            if not ln.rstrip().endswith('end'):
+                depth += 1
         if ln == 'end':
             depth -= 1
             if depth == 0: return block, b_nos, i + 1

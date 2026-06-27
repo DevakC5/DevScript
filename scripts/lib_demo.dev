@@ -1,7 +1,7 @@
 # lib_demo.dev — Showcasing new Library Features
 
-import "vision.dev"
-import "chart.dev"
+import "img"
+import "charts"
 
 say "=== Vision Features ==="
 let img = imread("input.png")

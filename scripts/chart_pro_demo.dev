@@ -1,6 +1,6 @@
 # chart_pro_demo.dev — Advanced Plotting Demo
 
-import "chart.dev"
+import "charts"
 
 say "=== Cartesian Plot (Negative Coordinates) ==="
 let cx = [-5, -2, 0, 3, 5]

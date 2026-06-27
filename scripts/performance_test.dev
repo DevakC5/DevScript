@@ -28,8 +28,8 @@ say "2. 5000 Vectorized Ops (100-element list): " + vec_time + "s"
 
 # 3. Library Import & Call Performance
 let start_lib = time()
-import "vision.dev"
-import "chart.dev"
+import "img"
+import "charts"
 let img = imread("bench.jpg")
 let res = resize(img, 500, 500)
 let gray = grayscale(res)

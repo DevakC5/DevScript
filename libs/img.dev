@@ -1,0 +1,33 @@
+# img.dev — Image / vision stubs (returns new dicts)
+
+def imread(path) ->
+  return {"type": "image", "path": path, "status": "loaded", "width": 640, "height": 480}
+end
+
+def imwrite(path, img) ->
+  return "Saved image to " + path
+end
+
+def blur(img, k) ->
+  return {"type": "image", "path": img["path"], "status": "blurred(" + k + ")", "width": img["width"], "height": img["height"]}
+end
+
+def grayscale(img) ->
+  return {"type": "image", "path": img["path"], "status": "grayscale", "width": img["width"], "height": img["height"]}
+end
+
+def resize(img, w, h) ->
+  return {"type": "image", "path": img["path"], "status": "resized(" + w + "x" + h + ")", "width": w, "height": h}
+end
+
+def rotate(img, angle) ->
+  return {"type": "image", "path": img["path"], "status": "rotated(" + angle + "deg)", "width": img["width"], "height": img["height"]}
+end
+
+def threshold(img, val) ->
+  return {"type": "image", "path": img["path"], "status": "threshold(" + val + ")", "width": img["width"], "height": img["height"]}
+end
+
+def canny(img) ->
+  return {"type": "image", "path": img["path"], "status": "edges(canny)", "width": img["width"], "height": img["height"]}
+end

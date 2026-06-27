@@ -289,13 +289,22 @@ def fmt_file(filepath: str):
     con().print(f"  [bold green]✓[/bold green] Formatted '{filepath}'")
 
 
+_PKG_REGISTRY = {
+    'charts': 'https://raw.githubusercontent.com/DevakC5/DevScript/main/libs/charts.dev',
+    'img':    'https://raw.githubusercontent.com/DevakC5/DevScript/main/libs/img.dev',
+    'chart':  'https://raw.githubusercontent.com/DevakC5/DevScript/main/libs/charts.dev',
+}
+
 def run_install(pkg: str):
     import urllib.request
     libs_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'libs')
     os.makedirs(libs_dir, exist_ok=True)
 
     # Resolve URL
-    if pkg.startswith(('http://', 'https://')):
+    url = _PKG_REGISTRY.get(pkg)
+    if url:
+        pass
+    elif pkg.startswith(('http://', 'https://')):
         url = pkg
     elif pkg.count('/') >= 2:
         url = f'https://raw.githubusercontent.com/{pkg}'
