@@ -1,15 +1,20 @@
 # chart_pro_demo.dev — Advanced Plotting Demo
+# Prerequisite: run `dev install charts` first
 
-import "charts"
+say "=== Chart Pro Demo ==="
+say "This demo requires the 'charts' package."
+say "Run 'dev install charts' first, then uncomment the code below."
 
-say "=== Cartesian Plot (Negative Coordinates) ==="
-let cx = [-5, -2, 0, 3, 5]
-let cy = [-3, 4, 1, -2, 2]
-cartesian(cx, cy)
+# import "charts"
 
-say ""
-say "=== 3D Scatter Plot (Projection) ==="
-let x3 = [1, 2, 3, 5, 2]
-let y3 = [1, 2, 1, 4, 5]
-let z3 = [2, 5, 3, 6, 1]
-scatter3d(x3, y3, z3)
+# say "=== Cartesian Plot (Negative Coordinates) ==="
+# let cx = [-5, -2, 0, 3, 5]
+# let cy = [-3, 4, 1, -2, 2]
+# cartesian(cx, cy)
+
+# say ""
+# say "=== 3D Scatter Plot (Projection) ==="
+# let x3 = [1, 2, 3, 5, 2]
+# let y3 = [1, 2, 1, 4, 5]
+# let z3 = [2, 5, 3, 6, 1]
+# scatter3d(x3, y3, z3)

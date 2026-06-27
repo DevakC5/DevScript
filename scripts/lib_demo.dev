@@ -1,24 +1,10 @@
 # lib_demo.dev — Showcasing new Library Features
+# Note: Uncomment the following lines after running `dev install img` and `dev install charts`
+# import "img"
+# import "charts"
 
-import "img"
-import "charts"
-
-say "=== Vision Features ==="
-let img = imread("input.png")
-let small = resize(img, 100, 100)
-let rotated = rotate(small, 90)
-let edges = canny(rotated)
-
-say "Pipeline: " + edges
-
-say ""
-say "=== Chart Features ==="
-
-# Scatter Plot
-let x_coords = [1, 2, 3, 5, 8]
-let y_coords = [2, 4, 1, 3, 5]
-scatter(x_coords, y_coords)
-
-# Histogram
-let data = [1, 2, 2, 3, 3, 3, 4, 4, 5, 8, 9, 10, 11, 12]
-hist(data, 5)
+say "=== Library Demo ==="
+say "To use vision & chart features, run:"
+say "  dev install img"
+say "  dev install charts"
+say "Then uncomment the imports at the top of this file."

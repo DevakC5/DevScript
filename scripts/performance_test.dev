@@ -26,17 +26,17 @@ let end_vec = time()
 let vec_time = end_vec - start_vec
 say "2. 5000 Vectorized Ops (100-element list): " + vec_time + "s"
 
-# 3. Library Import & Call Performance
-let start_lib = time()
-import "img"
-import "charts"
-let img = imread("bench.jpg")
-let res = resize(img, 500, 500)
-let gray = grayscale(res)
-let end_lib = time()
-let lib_time = end_lib - start_lib
-say "3. Library Imports + Vision Pipeline: " + lib_time + "s"
+# 3. Library Import & Call Performance (requires `dev install img` and `dev install charts`)
+# let start_lib = time()
+# import "img"
+# import "charts"
+# let bench_img = imread("bench.jpg")
+# let resized = resize(bench_img, 500, 500)
+# let gray = grayscale(resized)
+# let end_lib = time()
+# let lib_time = end_lib - start_lib
+# say "3. Library Imports + Vision Pipeline: " + lib_time + "s"
 
 say ""
 say "--- Performance Summary ---"
-say "Total Bench Time: " + (loop_time + vec_time + lib_time) + "s"
+say "Total Bench Time: " + loop_time + "s"

@@ -1,20 +1,23 @@
 # plot_save_demo.dev — Saving Plots as Images
+# Prerequisite: run `dev install charts` first
 
-import "charts"
+say "=== Plot Save Demo ==="
+say "This demo requires the 'charts' package."
+say "Run 'dev install charts' first, then uncomment the code below."
 
-say "=== Saving a Bar Chart ==="
-let labels = ["Apple", "Banana", "Cherry"]
-let values = [10, 20, 15]
+# import "charts"
 
-bar(labels, values)
-let status = save("fruit_chart.png", labels, values, "My Fruit Inventory")
-say "Status: " + status
+# say "=== Saving a Bar Chart ==="
+# let labels = ["Apple", "Banana", "Cherry"]
+# let values = [10, 20, 15]
+# bar(labels, values)
+# let status = save("fruit_chart.png", labels, values, "My Fruit Inventory")
+# say "Status: " + status
 
-say ""
-say "=== Saving a Line Chart ==="
-let x = [1, 2, 3, 4, 5]
-let y = [1, 4, 9, 16, 25]
-
-line(x, y)
-let status2 = save("square_numbers.png", x, y, "Square Numbers Plot")
-say "Status: " + status2
+# say ""
+# say "=== Saving a Line Chart ==="
+# let x = [1, 2, 3, 4, 5]
+# let y = [1, 4, 9, 16, 25]
+# line(x, y)
+# let status2 = save("square_numbers.png", x, y, "Square Numbers Plot")
+# say "Status: " + status2
