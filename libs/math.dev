@@ -1,0 +1,36 @@
+# libs/math.dev — math utilities
+
+let PI = 3.141592653589793
+let E = 2.718281828459045
+
+def abs(x) ->
+    if x < 0 ->
+        return -x
+    end
+    return x
+end
+
+def fact(n) ->
+    if n <= 1 ->
+        return 1
+    end
+    return n * fact(n - 1)
+end
+
+def clamp(val, lo, hi) ->
+    if val < lo ->
+        return lo
+    end
+    if val > hi ->
+        return hi
+    end
+    return val
+end
+
+def even(n) ->
+    return n % 2 == 0
+end
+
+def odd(n) ->
+    return n % 2 == 1
+end

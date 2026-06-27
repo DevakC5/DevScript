@@ -1,0 +1,38 @@
+# scripts/test_v4.dev — Test new v4.0 features
+
+say "=== Testing Lists & For Loops ==="
+let my_list = ["apple", "banana", "cherry"]
+say "List: " + my_list
+say "First item: " + my_list[0]
+
+for fruit in my_list ->
+    say "Fruit: " + fruit
+end
+
+say "=== Testing Range ==="
+for i in range(3) ->
+    say "Index: " + i
+end
+
+say "=== Testing Math Library ==="
+import "math.dev"
+say "PI is: " + PI
+say "Abs(-10) is: " + abs(-10)
+say "Factorial(5) is: " + fact(5)
+
+say "=== Testing Time Library ==="
+import "time.dev"
+say "Current time: " + now()
+say "Sleeping for 0.5s..."
+_sleep(0.5)  # Testing raw builtin
+say "Done!"
+
+say "=== Testing File Library ==="
+import "file.dev"
+let test_file = "v4_test.txt"
+say "Writing to file..."
+write(test_file, "DevLang v4.0 is here!")
+let content = read(test_file)
+say "File content: " + content
+
+say "=== All Tests Passed! ==="

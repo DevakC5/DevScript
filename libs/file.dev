@@ -1,0 +1,9 @@
+# libs/file.dev — file utilities
+
+def read(path) ->
+    return file_read(path)
+end
+
+def write(path, content) ->
+    file_write(path, content)
+end

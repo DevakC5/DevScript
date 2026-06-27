@@ -1,2 +1,0 @@
-[console_scripts]
-dev = dev_interpreter:main

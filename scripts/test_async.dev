@@ -1,0 +1,15 @@
+say "=== async/await ==="
+
+async def fetch(n) ->
+  say n
+  wait(200)
+  say "done"
+  return n * 2
+end
+
+say "calling fetch(5)..."
+let coro = fetch(5)
+say "got coroutine, now awaiting..."
+let result = await coro
+say result
+say "=== done ==="

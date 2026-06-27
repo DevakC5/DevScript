@@ -1,0 +1,29 @@
+# chart.dev — Plotting / Graph Library for DevLang
+
+def bar(labels, values) ->
+    return plot_bar(labels, values)
+end
+
+def line(labels, values) ->
+    return plot_line(labels, values)
+end
+
+def scatter(x, y) ->
+    return plot_scatter(x, y)
+end
+
+def hist(data, bins) ->
+    return plot_hist(data, bins)
+end
+
+def cartesian(x, y) ->
+    return plot_cartesian(x, y)
+end
+
+def scatter3d(x, y, z) ->
+    return plot_3d(x, y, z)
+end
+
+def save(filename, labels, values, title) ->
+    return plot_save(filename, labels, values, title)
+end

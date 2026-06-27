@@ -1,0 +1,25 @@
+# libs/interact.dev — terminal interaction helpers
+
+def pick(prompt, options) ->
+    return menu(prompt, options)
+end
+
+def yesno(prompt) ->
+    return confirm(prompt)
+end
+
+def secret(prompt) ->
+    return password(prompt)
+end
+
+def show_table(headers, rows) ->
+    return say_table(headers, rows)
+end
+
+def show_panel(content, title) ->
+    return say_panel(content, title)
+end
+
+def show_tree(data, title) ->
+    return say_tree(data, title)
+end

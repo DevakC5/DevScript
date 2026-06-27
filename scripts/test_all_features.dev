@@ -1,0 +1,88 @@
+# test_all_features.dev — end-to-end test of all new features
+# Run: dev run scripts/test_all_features.dev
+
+say "=== E2E: elif ==="
+let x = 7
+let grade = ""
+if x > 10 ->
+    let grade = "A"
+elif x > 5 ->
+    let grade = "B"
+else
+    let grade = "C"
+end
+say grade                                      # B
+
+say "=== E2E: break/continue ==="
+let s = 0
+let i = 0
+while i < 10 ->
+    let i = i + 1
+    if i == 3 ->
+        continue
+    end
+    if i == 7 ->
+        break
+    end
+    let s = s + i
+end
+say s                                           # 1+2+4+5+6 = 18
+
+say "=== E2E: list methods ==="
+let lst = [3, 1, 2]
+lst.sort()
+say lst                                         # [1, 2, 3]
+lst.append(4)
+say lst                                         # [1, 2, 3, 4]
+let popped = lst.pop()
+say popped                                      # 4
+say lst                                         # [1, 2, 3]
+
+say "=== E2E: string slicing ==="
+let msg = "DevLang"
+say msg[0]                                      # D
+say msg[1:4]                                    # evL
+say msg[:3]                                     # Dev
+say msg[3:]                                     # Lang
+
+say "=== E2E: list slicing ==="
+let nums = [0, 1, 2, 3, 4, 5]
+say nums[1:4]                                   # [1, 2, 3]
+say nums[:3]                                    # [0, 1, 2]
+
+say "=== E2E: range-based for ==="
+let total = 0
+for i in 4 ->
+    let total = total + i
+end
+say total                                       # 0+1+2+3 = 6
+
+say "=== E2E: dict literal ==="
+let d = {"name": "DevLang", "year": 2026}
+say d["name"]                                   # DevLang
+
+say "=== E2E: new builtins ==="
+say sqrt(9)                                     # 3
+say floor(3.7)                                  # 3
+say ceil(3.2)                                   # 4
+say round(3.5)                                  # 4
+say abs(-10)                                    # 10
+let r = rand()
+if r >= 0 and r < 1 ->
+    say "rand range OK"
+end
+
+say "=== E2E: file I/O error handling ==="
+let bad = file_read("nonexistent_file_98765.txt")
+say bad                                         # Error message, not crash
+
+say "=== E2E: import libs ==="
+import "math"
+say PI                                          # 3.14159...
+
+import "list"
+let a = [1, 2, 3, 4, 5]
+say last(a)                                     # 5
+say reverse(a)                                  # [5, 4, 3, 2, 1]
+
+say "=== ALL E2E TESTS PASSED ==="

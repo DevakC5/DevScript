@@ -1,7 +1,5 @@
 # vision.dev — Computer Vision Library for DevLang
 
-say "[vision.dev] Computer Vision Library Loaded"
-
 def imread(path) ->
     return cv_imread(path)
 end
@@ -16,4 +14,20 @@ end
 
 def grayscale(img) ->
     return cv_gray(img)
+end
+
+def resize(img, w, h) ->
+    return cv_resize(img, w, h)
+end
+
+def rotate(img, angle) ->
+    return cv_rotate(img, angle)
+end
+
+def threshold(img, val) ->
+    return cv_threshold(img, val)
+end
+
+def canny(img) ->
+    return cv_canny(img)
 end

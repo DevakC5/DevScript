@@ -1,0 +1,48 @@
+# libs/str.dev — string utilities
+
+def is_empty(s) ->
+    return s.len() == 0
+end
+
+def repeat(s, n) ->
+    if n <= 0 ->
+        return ""
+    end
+    let result = ""
+    repeat n ->
+        let result = result + s
+    end
+    return result
+end
+
+def split(s, sep) ->
+    let result = []
+    let current = ""
+    let i = 0
+    let sep_len = sep.len()
+    while i < s.len() ->
+        if s[i : i + sep_len] == sep ->
+            result.append(current)
+            let current = ""
+            let i = i + sep_len
+        else
+            let current = current + s[i]
+            let i = i + 1
+        end
+    end
+    result.append(current)
+    return result
+end
+
+def join(lst, sep) ->
+    let result = ""
+    let i = 0
+    while i < lst.len() ->
+        let result = result + lst[i]
+        if i < lst.len() - 1 ->
+            let result = result + sep
+        end
+        let i = i + 1
+    end
+    return result
+end

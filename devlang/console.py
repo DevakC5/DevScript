@@ -19,13 +19,13 @@ def panel(content, **kw):
     return Panel(content, **kw)
 
 def error(msg: str, line_no: int = None):
-    loc = f"[bold red]Line {line_no}:[/bold red] " if line_no else ""
+    loc = f"[bold red]Ln {line_no}:[/bold red] " if line_no else ""
     con().print(panel(
         f"{loc}[red]{msg}[/red]",
-        title="[bold red]⚠  DevLang Error[/bold red]",
+        title="[bold red]DevLang Error[/bold red]",
         border_style="red"
     ))
 
 def warn(msg: str, line_no: int = None):
-    loc = f"[yellow]Line {line_no}:[/yellow] " if line_no else ""
-    con().print(f"  [bold yellow]⚡ Warning:[/bold yellow] {loc}{msg}")
+    loc = f"[yellow]Ln {line_no}:[/yellow] " if line_no else ""
+    con().print(f"  [bold yellow]Warning:[/bold yellow] {loc}{msg}")

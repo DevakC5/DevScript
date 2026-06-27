@@ -1,0 +1,9 @@
+# libs/time.dev — time utilities
+
+def sleep(seconds) ->
+    _sleep(seconds)
+end
+
+def now() ->
+    return time()
+end

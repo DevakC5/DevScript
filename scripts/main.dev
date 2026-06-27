@@ -1,21 +1,19 @@
-# main.dev — DevLang v3.0 full demo
+# main.dev — DevLang v3.1 full demo
 # Run: dev run main.dev
 
 # ── 1. Inline comments ────────────────────────────
-say "=== DevLang v3.0 Demo ===" # this is an inline comment
+say "=== DevLang v3.1 Demo ===" # this is an inline comment
 let x = 10 # set x to 10
 
-# ── 2. else block ─────────────────────────────────
+# ── 2. elif block ─────────────────────────────────
 let score = 72
 
 if score >= 90 ->
     say "Grade: A"
+elif score >= 75 ->
+    say "Grade: B"
 else
-    if score >= 75 ->
-        say "Grade: B"
-    else
-        say "Grade: C"
-    end
+    say "Grade: C"
 end
 
 # ── 3. and / or / not ─────────────────────────────
@@ -45,7 +43,23 @@ while n > 0 ->
 end
 say "Blastoff!"
 
-# ── 5. Functions (def / return) ───────────────────
+# ── 5. break / continue ──────────────────────────
+say "--- Break / Continue ---"
+let s = 0
+let i = 0
+while i < 10 ->
+    let i = i + 1
+    if i == 3 ->
+        continue
+    end
+    if i == 7 ->
+        break
+    end
+    let s = s + i
+end
+say s                               # 18 (1+2+4+5+6)
+
+# ── 6. Functions (def / return) ───────────────────
 say "--- Functions ---"
 
 def greet(name) ->
@@ -72,8 +86,8 @@ say result                         # 15
 let check = is_even(4)
 say check                          # true
 
-# ── 6. String methods ─────────────────────────────
-say "--- String Methods ---"
+# ── 7. String methods / slicing ───────────────────
+say "--- String Methods & Slicing ---"
 
 let lang = "  devlang  "
 say lang.trim()                    # devlang
@@ -85,22 +99,55 @@ let sentence = "I love coding"
 say sentence.contains("love")      # true
 say sentence.replace("love", "enjoy")  # I enjoy coding
 
-# ── 7. Functions + loops combined ─────────────────
-say "--- FizzBuzz ---"
+# String slicing
+let msg = "DevLang"
+say msg[0]                         # D
+say msg[1:4]                       # evL
+say msg[:3]                        # Dev
+
+# ── 8. Dict literals ──────────────────────────────
+say "--- Dict Literals ---"
+let person = {"name": "DevLang", "year": 2026}
+say person["name"]                 # DevLang
+say person["year"]                 # 2026
+
+# ── 9. List methods ──────────────────────────────
+say "--- List Methods ---"
+let lst = [3, 1, 2]
+lst.sort()
+say lst                            # [1, 2, 3]
+lst.append(4)
+say lst                            # [1, 2, 3, 4]
+let popped = lst.pop()
+say popped                         # 4
+say lst                            # [1, 2, 3]
+
+# ── 10. List slicing ─────────────────────────────
+say "--- List Slicing ---"
+let nums = [0, 1, 2, 3, 4, 5]
+say nums[1:4]                      # [1, 2, 3]
+say nums[:3]                       # [0, 1, 2]
+
+# ── 11. for i in N (numeric range) ────────────────
+say "--- Numeric For Loop ---"
+let total = 0
+for i in 4 ->
+    let total = total + i
+end
+say total                          # 6 (0+1+2+3)
+
+# ── 12. FizzBuzz (with elif) ──────────────────────
+say "--- FizzBuzz (with elif) ---"
 
 def fizzbuzz(num) ->
     if num % 15 == 0 ->
         return "FizzBuzz"
+    elif num % 3 == 0 ->
+        return "Fizz"
+    elif num % 5 == 0 ->
+        return "Buzz"
     else
-        if num % 3 == 0 ->
-            return "Fizz"
-        else
-            if num % 5 == 0 ->
-                return "Buzz"
-            else
-                return num
-            end
-        end
+        return num
     end
 end
 
@@ -110,7 +157,118 @@ while i <= 15 ->
     let i = i + 1
 end
 
-# ── 8. Input ──────────────────────────────────────
+# ── 13. New builtins ──────────────────────────────
+say "--- New Builtins ---"
+say sqrt(9)                        # 3
+say floor(3.7)                     # 3
+say ceil(3.2)                      # 4
+say round(3.5)                     # 4
+say abs(-10)                       # 10
+
+# ── 14. Input ─────────────────────────────────────
 say "--- Input ---"
 input name -> "Your name: "
 say "Hey, " + name + "! Welcome to DevLang."
+
+# ── 15. Terminal UI Toolkit ───────────────────────
+say "--- Terminal UI Toolkit ---"
+
+# Rich output
+say_panel("Hello from DevLang!", "Greeting")
+say_table(["Name", "Score"], [["Alice", 95], ["Bob", 87], ["Charlie", 92]])
+say_tree(["alpha", "beta", "gamma"], "Greek Letters")
+
+# Progress bar
+let p = progress_start("Testing", 5)
+let n = 1
+while n <= 5 ->
+    say "Step " + n
+    progress_tick(p)
+    _sleep(0.2)
+    let n = n + 1
+end
+progress_stop(p)
+
+# ── 16. Live Display ────────────────────────────
+say "--- Live Display ---"
+live_start("Countdown")
+let count = 5
+while count > 0 ->
+    live_set(count)
+    wait(400)
+    let count = count - 1
+end
+live_set("Blastoff!")
+wait(500)
+live_stop()
+
+# ── 17. Timers ──────────────────────────────────
+say "--- Timers ---"
+def tick() ->
+    say "tick"
+end
+set_timeout("tick", 300)
+wait(600)
+say "Timer done"
+
+# ── 18. Structs & Enums ──────────────────────────
+say "--- Structs ---"
+struct Person ->
+  let name = ""
+  let age = 0
+end
+let p = Person("Alice", 30)
+say p.name
+say p.age
+
+struct Point ->
+  let x = 0
+  let y = 0
+end
+let pt = Point(3, 4)
+say pt.x
+
+say "--- Enums ---"
+enum Color -> Red, Green, Blue
+say Red
+say Green
+say Blue
+
+# ── 19. Matrix ops ──────────────────────────────
+say "--- Matrix ---"
+let m = matrix([[1,2],[3,4]])
+say m
+say m.T
+let i = identity(3)
+say i
+let z = zeros_matrix(2, 3)
+say z
+
+# ── 20. JSON/CSV ───────────────────────────────
+say "--- JSON ---"
+let j = json_loads('{"name": "DevLang", "ver": 3.1}')
+say json_dumps(j)
+
+say "--- CSV ---"
+let c = json_loads('[["a","b"],[1,2],[3,4]]')
+csv_write("_test.csv", c)
+let d = csv_read("_test.csv")
+say d[0]
+say d[1]
+
+# ── 21. Spawn (threads) ─────────────────────────
+say "--- Spawn ---"
+spawn ->
+  say "  worker thread"
+end
+thread_join(_last_spawn)
+
+# ── 22. async/await ────────────────────────────
+say "--- Async ---"
+async def compute(n) ->
+  wait(100)
+  return n * 10
+end
+let c2 = compute(7)
+let r2 = await c2
+say r2

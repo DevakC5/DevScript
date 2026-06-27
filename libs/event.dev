@@ -1,0 +1,21 @@
+# libs/event.dev — event-driven programming helpers
+
+def after(delay_ms, fn_name) ->
+    return set_timeout(fn_name, delay_ms)
+end
+
+def every(interval_ms, fn_name) ->
+    return set_interval(fn_name, interval_ms)
+end
+
+def cancel(timer_id) ->
+    return clear_timer(timer_id)
+end
+
+def pause(ms) ->
+    wait(ms)
+end
+
+def key(prompt) ->
+    return key_wait(prompt)
+end
